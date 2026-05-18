@@ -121,3 +121,35 @@ def ordenar_bubble_sort(lista: list, ascendente: bool) -> list:
     
     return lista_ordenada
    
+def convertir_lista_posiciones_a_string(posiciones: list) -> str:
+    """
+    Convierte una lista de posiciones a un string separado por comas
+    
+    Args:
+        posiciones: Lista de números enteros
+        
+    Returns:
+        String con las posiciones separadas por comas
+    """
+    if len(posiciones) == 0:
+        return ""
+    
+    resultado = ""
+    for i in range(len(posiciones)):
+        num = posiciones[i]
+        
+        if num == 0:
+            num_str = "0"
+        else:
+            num_str = ""
+            num_aux = num
+            while num_aux > 0:
+                num_str = chr(48 + (num_aux % 10)) + num_str
+                num_aux = num_aux // 10
+        
+        if i > 0:
+            resultado = resultado + "," + num_str
+        else:
+            resultado = resultado + num_str
+    
+    return resultado   

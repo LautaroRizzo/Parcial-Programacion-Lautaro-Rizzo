@@ -1,55 +1,50 @@
 # analisis, modulo con funcion de analizar las contraseñas
 from utilidades import es_letra, es_numero, es_simbolo, invertir_string
 
-def nivel_seguridad(contra: str)-> str:
-  """
+def nivel_seguridad(contra: str) -> str:
+    """
     Determina el nivel de seguridad de la contraseña
-    
-    criterios:
-     Débil: entre 8-9 caracteres, solo letras
-     Media: letras y números
-     Fuerte: letras, números, símbolos y al menos 12 caracteres
-    
-    args:
-    contra: Contraseña a analizar
-        
-    returns:
-    String con el nivel de seguridad
-    """
-  largo = len (contra)
-  tiene_letra = False
-  tiene_numero = False
-  tiene_simnbolo = False
-
-  #recorrer la contraseña
-  for i in range (largo):
-    if es_letra(contra[i]):
-      tiene_letra = True
-
-    elif es_numero (contra[i]):
-      tiene_numero = True
-
-    elif es_simbolo(contra[i]):
-      tiene_simnbolo = True 
-    #evaluacion de nivel
-    if 8 <= largo <=9 and tiene_letra and not tiene_numero and not tiene_simnbolo:
-        return "Contraseña Debil 🔴"
-    
-    elif tiene_letra and tiene_numero and not tiene_simnbolo:
-      return "Contraseña Media 🟨" 
-    
-    elif tiene_simnbolo and tiene_numero and tiene_simnbolo:
-      return "Contraseña Fuerte 💚"
-    
-
-
-def contar_caracteres (contra: str) -> tuple:
-    """
-    Cuenta letras, números, símbolos y espacios en la contraseña
     
     Args:
         contra: Contraseña a analizar
         
+    Returns:
+        String con el nivel de seguridad
+    """
+    largo = len(contra)
+    tiene_letra = False
+    tiene_numero = False
+    tiene_simbolo = False
+
+    # Recorrer la contraseña
+    for i in range(largo):
+        if es_letra(contra[i]):
+            tiene_letra = True
+        elif es_numero(contra[i]):
+            tiene_numero = True
+        elif es_simbolo(contra[i]):
+            tiene_simbolo = True
+
+    # Evaluación de nivel
+    if 8 <= largo <= 9 and tiene_letra and not tiene_numero and not tiene_simbolo:
+        return "Contraseña Débil 🔴"
+
+    elif tiene_letra and tiene_numero and not tiene_simbolo:
+        return "Contraseña Media 🟡"
+
+    elif tiene_letra and tiene_numero and tiene_simbolo and largo >= 12:
+        return "Contraseña Fuerte 🟢"
+
+    else:
+        return "No clasifica ⚪"
+
+def contar_caracteres(contra: str) -> tuple:
+    """
+    Cuenta letras, números, símbolos y espacios en la contraseña
+
+    Args:
+        contra: Contraseña a analizar
+
     Returns:
         Tupla con (letras, numeros, simbolos, espacios)
     """
@@ -61,19 +56,14 @@ def contar_caracteres (contra: str) -> tuple:
     for i in range(len(contra)):
         if contra[i] == ' ':
             espacios += 1
-
         elif es_letra(contra[i]):
-            letras +=1
-
+            letras += 1
         elif es_numero(contra[i]):
-           numeros +=1
-
+            numeros += 1
         elif es_simbolo(contra[i]):
-           simbolos +=1
+            simbolos += 1
 
     return (letras, numeros, simbolos, espacios)
-
-
 
 def buscar_caracter(contra: str, caracter: str) -> tuple:
     """
