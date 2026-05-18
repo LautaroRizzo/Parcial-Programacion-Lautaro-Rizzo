@@ -118,7 +118,7 @@ El programa respeta todas las restricciones indicadas en la consigna:
 - ❌ No se utiliza el operador `in`.
 - ❌ No se utiliza slicing (`[::-1]`, `[1:3]`).
 - ❌ No se utilizan funciones avanzadas como `sorted()`.
-- ✅ Solo se utilizan: `len()`, `input()`, `print()`, `int()`, `float()`, `str()`, `range()`, `ord()`, `chr()`.
+- ✅ Solo se utilizan: `len()`, `input()`, `print()`, `int()`, `float()`, `str()`, `range()`, `ord()`.
 
 ---
 
