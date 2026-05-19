@@ -1,4 +1,4 @@
-# analisis, modulo con funcion de analizar las contraseñas
+# analisis, modulo con funcion de analizar las contraseñass
 from utilidades import es_letra, es_numero, es_simbolo, invertir_string
 
 def nivel_seguridad(contra: str) -> str:
