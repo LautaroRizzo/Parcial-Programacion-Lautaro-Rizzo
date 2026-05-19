@@ -1,4 +1,4 @@
-# Módulo con funciones para generar estadísticas
+# Módulo con funciones para generar estadística
 from analisis import contar_caracteres
 from utilidades import contar_repetidos_consecutivos
 

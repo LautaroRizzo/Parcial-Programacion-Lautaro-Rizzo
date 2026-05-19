@@ -50,10 +50,10 @@ def invertir_string(texto: str) -> str:
     """
     Invierte un string sin usar slicing
     
-    Args:
+    args:
         texto: String a invertirr
         
-    Returns:
+    returns:
         String invertido
     """
     invertido = ""
