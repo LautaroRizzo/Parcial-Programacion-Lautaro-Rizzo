@@ -51,7 +51,7 @@ def invertir_string(texto: str) -> str:
     Invierte un string sin usar slicing
     
     Args:
-        texto: String a invertir
+        texto: String a invertirr
         
     Returns:
         String invertido
