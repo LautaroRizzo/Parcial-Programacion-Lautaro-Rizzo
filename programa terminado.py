@@ -6,9 +6,7 @@ from estadistica import generar_report
 from utilidades import invertir_string
 
 
-
 # MENÚS
-
 
 def mostrar_menu() -> None:
     """Muestra el menú principal del sistema"""
@@ -39,9 +37,7 @@ def mostrar_menu_ordenamiento() -> None:
     print("   └────────────────────────────────────────────┘")
 
 
-
 # FUNCIONES AUXILIARES
-
 
 def mostrar_resultado_busqueda(cantidad: int, posiciones: list, caracter: str) -> None:
     """Muestra los resultados de la búsqueda de un carácter"""
@@ -65,7 +61,8 @@ def preguntar_continuar() -> bool:
     print("   2. 🚪 Salir del programa")
     print("-" * 40)
     
-    while True:
+    opcion_valida = False
+    while not opcion_valida:
         opcion = input("Ingrese su opción: ")
         if opcion == "1":
             return True
@@ -81,7 +78,6 @@ def validar_que_haya_contraseña(contrasenia: str) -> bool:
         print("⚠️ Primero debe ingresar una contraseña (opción 1)")
         return False
     return True
-
 
 
 # OPCIONES DEL MENÚ
@@ -124,12 +120,13 @@ def opcion_buscar_caracter(contrasenia: str) -> None:
     if not validar_que_haya_contraseña(contrasenia):
         return
     
-    while True:
+    caracter_valido = False
+    while not caracter_valido:
         caracter = input("Ingrese el carácter a buscar: ")
         if len(caracter) == 1:
             cantidad, posiciones = buscar_caracter(contrasenia, caracter)
             mostrar_resultado_busqueda(cantidad, posiciones, caracter)
-            break
+            caracter_valido = True
         else:
             print("⚠️ Debe ingresar UN SOLO caracter. Intente nuevamente.")
 
@@ -169,7 +166,8 @@ def opcion_ordenar_caracteres(contrasenia: str) -> None:
     if not validar_que_haya_contraseña(contrasenia):
         return
     
-    while True:
+    opcion_valida = False
+    while not opcion_valida:
         mostrar_menu_ordenamiento()
         subopcion = input("Elija una opción: ")
         
@@ -180,7 +178,7 @@ def opcion_ordenar_caracteres(contrasenia: str) -> None:
             print(f"   Original: {contrasenia}")
             print(f"   Ordenada: {resultado}")
             print("-" * 30)
-            break
+            opcion_valida = True
         elif subopcion == "2":
             resultado = ordenar_contraseña(contrasenia, subopcion)
             print("📋 ORDEN DESCENDENTE")
@@ -188,7 +186,7 @@ def opcion_ordenar_caracteres(contrasenia: str) -> None:
             print(f"   Original: {contrasenia}")
             print(f"   Ordenada: {resultado}")
             print("-" * 30)
-            break
+            opcion_valida = True
         else:
             print("❌ Opción inválida. Elija 1 o 2. Intente nuevamente.")
 
